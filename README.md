@@ -80,7 +80,7 @@ credentials written to ~/operator_credentials.txt during install.
 Argus requires a license to run scans. Without a license the dashboard
 is accessible but scanning is disabled.
 
-To obtain a license contact: sales@elytrasecurity.com
+To obtain a license contact: info@elytrasecurity.com
 
 Once you have a license file (.ela), install it via:
 Configuration > License > Upload new license file
