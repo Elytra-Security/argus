@@ -1,11 +1,39 @@
 # Elytra Argus
 
 **Argus** is the Defensive SAR (Security Attack Resistance) platform by Elytra Security.
+
 It models what AI-driven adversaries can discover, chain, and weaponize, then converts
 that intelligence into deterministic Fix Packs with validation proof.
 
 Argus runs as an on-premises appliance. No data leaves the network.
 No cloud dependency. No agentic AI at runtime.
+
+---
+
+## What Argus Does
+
+Argus answers the questions that matter to security teams and boards:
+
+- What can an AI-driven attacker learn about us from the outside and inside?
+- What can that attacker chain together toward crown jewels or sensitive data?
+- Which findings are truly feasible to exploit?
+- What should we fix first, and what exact ticket goes into ITSM?
+- How do we prove the issue is fixed?
+- Are we becoming harder to recon over time?
+
+---
+
+## Key Capabilities
+
+- **SAR Matrix** — maps findings to AI-driven reconnaissance stages and techniques
+- **Recon Resistance Score** — board-level metric for AI recon advantage reduction
+- **Attacker Next-Step Simulation** — deterministic adversary path reasoning over scan evidence
+- **Action Command Center** — prioritized Fix Packs with ITSM handoff and validation contracts
+- **Evidence Ledger** — tamper-evident audit history for every Fix Pack state change
+- **Coverage Gap Detection** — identifies weakly monitored or unmonitored critical assets
+- **Connectors** — Active Directory, M365, AWS, GCP, Wazuh
+
+All classification and scoring is deterministic. No LLM at runtime.
 
 ---
 
@@ -16,97 +44,53 @@ No cloud dependency. No agentic AI at runtime.
 - 10 GB free disk on /var/lib/argus
 - x86-64 architecture
 - systemd
-- Internet access for initial package installation only
 
 ---
 
-## Download
+## Getting Argus
 
-Download the latest release from the
-[Releases](https://github.com/Elytra-Security/argus/releases) page.
+Argus is distributed exclusively through the Elytra Customer Portal.
 
-Current release: **2026.01**
+Licensed customers can download the latest release and installation
+documentation at:
 
-    curl -LO https://github.com/Elytra-Security/argus/releases/download/2026.01/argus-2026.01.tar.gz
-    curl -LO https://github.com/Elytra-Security/argus/releases/download/2026.01/argus-2026.01.tar.gz.sha256
+[https://portal.elytrasecurity.com](https://portal.elytrasecurity.com)
 
----
-
-## Verify
-
-Always verify the checksum before installing:
-
-    sha256sum --check argus-2026.01.tar.gz.sha256
-
-Expected output: `argus-2026.01.tar.gz: OK`
-
-Do not proceed if the checksum fails.
-
----
-
-## Install
-
-    tar xzf argus-2026.01.tar.gz
-    cd argus-2026.01
-    ./scripts/install.sh
-
-The install script:
-
-- Runs as a regular OS user with sudo access
-- Installs all system dependencies automatically
-- Creates the argus system user and directory structure
-- Sets up PostgreSQL and applies the database schema
-- Configures and starts the argusd service via systemd
-- Sets up nginx as a TLS reverse proxy on ports 80 and 443
-- Writes operator credentials to ~/operator_credentials.txt
-
-Installation takes approximately 2-5 minutes on a fresh system.
-
----
-
-## First Login
-
-After installation, open a browser and navigate to:
-
-    https://APPLIANCE_IP
-
-Accept the self-signed certificate warning. Log in with the
-credentials written to ~/operator_credentials.txt during install.
+To request access or a trial license, contact:
+[info@elytrasecurity.com](mailto:info@elytrasecurity.com)
 
 ---
 
 ## License
 
-Argus requires a license to run scans. Without a license the dashboard
-is accessible but scanning is disabled.
+Argus requires a valid license to run scans. Without a license the
+dashboard is accessible but scanning is disabled.
 
-To obtain a license contact: info@elytrasecurity.com
-
-Once you have a license file (.ela), install it via:
-Configuration > License > Upload new license file
-
-No restart is required. The daemon reloads the license immediately.
-
----
-
-## Superadmin Setup
-
-The install script creates an operator account automatically.
-To activate the superadmin account, SSH into the appliance after
-the service is running and contact support@elytrasecurity.com
-for the activation procedure.
+License management is available under Configuration > License
+in the Argus operator console. No restart is required when a new
+license is installed.
 
 ---
 
 ## Support
 
-- General: support@elytrasecurity.com
-- Security issues: see SECURITY.md
+| Channel | Contact |
+|---|---|
+| General | support@elytrasecurity.com |
+| Security issues | See SECURITY.md |
+| Sales and licensing | info@elytrasecurity.com |
 
 ---
 
 ## Version History
 
-| Version | Date       | Notes               |
-|---------|------------|---------------------|
-| 2026.01 | 2026-05-09 | Initial GA release  |
+| Version | Date       | Notes              |
+|---------|------------|--------------------|
+| 2026.01 | 2026-05-09 | Initial GA release |
+
+---
+
+## Security
+
+For responsible disclosure and security vulnerability reporting,
+see [SECURITY.md](SECURITY.md).
